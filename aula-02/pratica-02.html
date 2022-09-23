@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 1) Exiba um alert quando o botão for clicado -->
+        <div>
+            <button v-on:click="exibir_alerta">Exibir Alerta</button>
+        </div>
+        
+        <!-- 2) Escute o evento "keyup" e armazene o valor na propriedade
+            data (dica: event.target.value) -->
+        <div>
+            <input v-on:keyup="digitar_1" type="text">
+            <p>{{ valor_1 }}</p>
+        </div>
+        
+        <!-- 3) Ajuste o exemplo 2 para disparar o evento "keyup" somente
+            quando a tecla for ENTER -->
+        <div>
+            <input v-on:keyup.enter="valor_2 = $event.target.value" type="text">
+            <p>{{ valor_2 }}</p>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

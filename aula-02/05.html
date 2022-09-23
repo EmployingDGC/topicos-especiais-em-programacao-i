@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p v-on:mousemove="get_mouse">Mouse: x: {{ x }} y: {{ y }}</p>
+
+        <h2>{{ contador }}</h2>
+
+        <button v-on:click="aumentar(1)">SOMAR</button>
+        <button v-on:click="aumentar(-1)">SUBTRAIR</button>
+
+        <h2>{{ contador_2 }}</h2>
+
+        <button v-on:click="aumentar_2(1)">SOMAR</button>
+        <button v-on:click="aumentar_2(-1)">SUBTRAIR</button>
+
+        <p>Resultador: {{ resultado }}</p>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
