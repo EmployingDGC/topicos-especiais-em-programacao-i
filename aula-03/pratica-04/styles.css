@@ -13,3 +13,27 @@
 	background-color: gray;
 	width: 50px !important;
 }
+
+.b-lime {
+	background-color: lime;
+}
+
+.w-100 {
+	width: 100px;
+}
+
+.h-w-100--b-red {
+	height: 100px;
+	width: 100px;
+	background-color: red;
+}
+
+.h-30--w-75--b-aqua {
+	height: 30px;
+	width: 75px;
+	background-color: aqua;
+}
+
+.b-grey {
+	background-color: grey;
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+	<link rel="stylesheet" href="styles.css">
+	
+    <title>Document</title>
+
+    <style>
+        .caixas {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .demo {
+            width: 100px;
+            height: 100px;
+            background-color: gray;
+        }
+
+        .c1 {
+            background-color: red;
+        }
+
+        .cor-2 {
+            background-color: green;
+        }
+
+        .c3 {
+            background-color: blue;
+        }
+
+        .girar {
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+	<div id="app">
+        <div class="caixas">
+            <div
+                class="demo"
+                :class="{c1: aplicar_c1}"
+                @click="aplicar_c1 = !aplicar_c1"
+            ></div>
+            <div
+                class="demo"
+                :class="{'cor-2': aplicar_c2, c1: !aplicar_c2}"
+                @click="aplicar_c2 = !aplicar_c2"
+            ></div>
+            <div
+                class="demo"
+                :class="estilo"
+                @click="aplicar_c2 = !aplicar_c2"
+            ></div>
+            <div
+                class="demo"
+                :class="[classe_css, {'girar': aplicar_girar}]"
+                @click="aplicar_girar = !aplicar_girar"
+            ></div>
+        </div>
+	</div>
+	<script>
+        new Vue({
+            el: "#app", 
+            data: {
+                aplicar_c1: true,
+                aplicar_c2: false,
+                aplicar_c3: false,
+                aplicar_girar: true,
+                classe_css: "c3"
+            },
+            watch: {
+                
+            },
+            computed: {
+                estilo() {
+                    return {
+                        "cor-2": this.aplicar_c2,
+                        c1: !this.aplicar_c2
+                    }
+                }
+            },
+            methods: {
+                
+            }
+        })
+    </script>
+</body>
+</html>
