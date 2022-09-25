@@ -78,8 +78,12 @@
 		e binding de estilo. -->
 		<h2>#06</h2>
 		<div>
-			<button @click="iniciarProgresso">Iniciar</button>
-			<div></div>
+			<button
+				@click="iniciarProgresso"
+			>Iniciar</button>
+			<div
+				:style="progress_bar"
+			>{{ progress }}</div>
 		</div>
 	</div>
 	<script src="app.js"></script>
