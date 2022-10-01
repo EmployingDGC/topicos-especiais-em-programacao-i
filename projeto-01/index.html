@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Matadores</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="panel">
+            <h3>Ataque Especial: {{ status.Jogador.ataque.especial }}</h3>
+            <h3>Cura: {{ status.Jogador.cura.usos }}</h3>
+            <div class="scores">
+                <div
+                    class="score"
+                    v-for="(v, c) in status"
+                >
+                    <h1>{{ c }}</h1>
+
+                    <div class="life-bar">
+                        <div
+                            :class="['life', {danger: !(v.vida > 25)}]"
+                            :style="{width: v.vida + '%'}"
+                        ></div>
+                    </div>
+
+                    <div>{{ v.vida }}%</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel result">
+            <div
+                class="draw"
+                v-if="vencedor.Jogador && vencedor.Invasor"
+            >
+                Empatou! :|
+            </div>
+
+            <div
+                class="win"
+                v-else-if="vencedor.Jogador"
+            >
+                Você ganhou!!! :)
+            </div>
+            
+            <div
+                class="lose"
+                v-else-if="vencedor.Invasor"
+            >
+                Você perdeu! :(
+            </div>
+        </div>
+
+        <div class="panel buttons">
+            <template
+                v-if="iniciar"
+            >
+                <button
+                    class="btn attack"
+                    @click="func_btn_attack(0)"
+                >
+                    Ataque
+                </button>
+
+                <button
+                    class="btn especial-attack"
+                    @click="func_btn_attack(6)"
+                    v-if="status.Jogador.ataque.especial > 0"
+                >
+                    Ataque Especial
+                </button>
+                
+                <button
+                    class="btn heal"
+                    @click="func_btn_curar"
+                    v-if="status.Jogador.cura.usos > 0"
+                >
+                    Curar
+                </button>
+                
+                <button
+                    class="btn give-up"
+                    @click="func_reset(); iniciar = false"
+                >
+                    Desistir
+                </button>
+            </template>
+            
+            <button
+                class="btn new-game"
+                v-else
+                @click="func_reset(); iniciar = true"
+            >
+                Iniciar Jogo
+            </button>
+        </div>
+        <div class="panel logs">
+            <ul>
+                <li
+                    v-for="v in log"
+                    :class="v.class"
+                >{{ v.text }}</li>
+            </ul>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
