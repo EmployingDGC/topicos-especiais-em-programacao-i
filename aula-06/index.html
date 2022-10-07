@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Teste</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+    <div id="app">
+        <comp></comp>
+        <comp></comp>
+        <comp></comp>
+        <comp></comp>
+        <comp></comp>
+        <comp></comp>
+    </div>
+    <script>
+        Vue.component("comp", {
+            template: `
+                <div>
+                    <h1>{{ aula }}</h1>
+                    <h1>{{ modulo }}</h1>
+                    <button @click="alterar_aula">Alterar Aula</button>
+                    <button @click="alterar_modulo">Alterar Módulo</button>
+                </div>
+            `,
+            data() {
+                return {
+                    aula: "Aula: usando Refs",
+                    modulo: "Módulo: Instância Vue"
+                }
+            },
+            methods: {
+                alterar_aula() {
+                    this.aula += "#"
+                },
+                alterar_modulo() {
+                    this.modulo += "&"
+                }
+            }
+        })
+
+        const vm = new Vue({el: "#app"})
+
+    </script>
+</body>
+</html>

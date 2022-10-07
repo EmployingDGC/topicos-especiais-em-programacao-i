@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Teste</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+    <div id="app1">
+        <h1>{{ titulo_1 }}</h1>
+        <button @click="alterar">Alterar</button>
+    </div>
+    <div id="app2">
+        <h1>{{ titulo_2 }}</h1>
+        <button @click="alterar">Alterar</button>
+    </div>
+    <script>
+        const vm1 = new Vue({
+            el: '#app1',
+            data: {
+                titulo_1: "Teste 1"
+            },
+            methods: {
+                alterar() {
+                    // this.titulo_1 += "!"
+                    vm2.titulo_2 += "!"
+                }
+            }
+        })
+        
+        const vm2 = new Vue({
+            el: '#app2',
+            data: {
+                titulo_2: "Teste 2"
+            },
+            methods: {
+                alterar() {
+                    this.titulo_2 += "!"
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Teste</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+    <div id="app1">
+        <h1 ref="aula_ref">{{ aula }}</h1>
+        <button @click="alterar_aula">Alterar Aula</button>
+        <h1>{{ modulo }}</h1>
+        <button @click="alterar_modulo">Alterar Módulo</button>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app1',
+            data: {
+                aula: "Aula: usando Refs",
+                modulo: "Módulo: Instância Vue"
+            },
+            methods: {
+                alterar_aula() {
+                    this.aula += "#"
+                },
+                alterar_modulo() {
+                    this.modulo += "&"
+                }
+            }
+        })
+
+        vm.$refs.aula_ref.innerHTML = "Alterar Diretamente"
+    </script>
+</body>
+</html>
