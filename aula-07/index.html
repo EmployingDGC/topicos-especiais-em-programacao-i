@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Teste</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{ titulo }}</h1>
+        <button @click="titulo += '#'">Alterar Título</button>
+        <button @click="$destroy()">Destruir Instância</button>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                titulo: "Cilo de Vida!"
+            },
+            beforeCreate() {
+                console.log("Antes de Criar");
+            },
+            created() {
+                console.log("Criado");
+            },
+            beforeMount() {
+                console.log("Antes de Montar");
+            },
+            mounted() {
+                console.log("Montado");
+            },
+            beforeUpdate() {
+                console.log("Antes de Atualizar");
+            },
+            updated() {
+                console.log("Atualizado");
+            },
+            beforeDestroy() {
+                console.log("Antes de Destruir");
+            },
+            destroyed() {
+                console.log("Destruido");
+            }
+        })
+
+    </script>
+</body>
+</html>
