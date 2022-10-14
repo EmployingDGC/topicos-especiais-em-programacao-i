@@ -17,3 +17,14 @@ entrar na pasta do projeto
 
 rodar o server
 `npm run serve`
+
+prefixo de plugins
+- vue-cli-plugin-
+
+plugins
+- Electron Builder `vue add electron-builder`
+  - Fazer build de aplicações desktop
+  - `npm run electron:serve`
+  - `npm run electron:build`
+- Vuetify `vue add vuetify`
+  - novos designs
