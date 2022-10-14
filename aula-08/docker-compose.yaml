@@ -1,7 +1,7 @@
 version: '3.1'
 services:
   node-vue-16-18:
-    image: node:16.18-alpine3.15
+    build: .
     command: sleep infinity
     volumes:
       - ./vue-cli:/app
