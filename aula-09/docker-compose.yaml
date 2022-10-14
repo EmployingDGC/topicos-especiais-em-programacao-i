@@ -1,0 +1,9 @@
+version: '3.1'
+services:
+  node-vue-16-18:
+    build: .
+    command: sleep infinity
+    volumes:
+      - ./vue-cli:/app
+    ports:
+      - 5555:8080
