@@ -1,5 +1,10 @@
 FROM node:16.18-alpine3.15
 
+RUN apt-get -y update \
+  && apt-get install -y git
+
 RUN npm install -g @vue/cli
+
+EXPOSE 8080
 
 WORKDIR /app

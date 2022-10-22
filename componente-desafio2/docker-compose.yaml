@@ -1,9 +1,12 @@
-version: '3.1'
+version: "3.3"
 services:
   node-vue-16-18:
     build: .
-    command: sleep infinity
     volumes:
       - ./vue-cli:/app
     ports:
-      - 5555:8080
+      - 8080:8080
+    stdin_open: true
+    tty: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
