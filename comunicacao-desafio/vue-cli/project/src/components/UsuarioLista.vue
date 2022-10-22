@@ -8,7 +8,11 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="usuario in usuarios" :key="usuario.id">
+                <tr
+                    v-for="usuario in usuarios"
+                    :key="usuario.id"
+                    @click="mudar_usuario(usuario)"
+                >
                     <td>{{ usuario.id }}</td>
                     <td>{{ usuario.nome }}</td>
                 </tr>
@@ -18,8 +22,20 @@
 </template>
 
 <script>
+import event_selecionar_usuario from "../events/onSelecionarUsuario"
+
 export default {
-    props: { usuarios: Array }
+    props: { usuarios: Array },
+    data: () => ({
+        mudar_usuario(usuario) {
+            /*
+                Quando a linha da tabela for precionada será emitido o evento
+                (onSelecionarUsuario) e será passado para o valor do evendo a
+                variável (usuario)
+            */
+            event_selecionar_usuario.$emit("onSelecionarUsuario", usuario)
+        }
+    })
 }
 </script>
 

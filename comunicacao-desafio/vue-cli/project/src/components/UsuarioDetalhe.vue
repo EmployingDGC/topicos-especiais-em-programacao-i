@@ -10,11 +10,29 @@
 </template>
 
 <script>
+import event_selecionar_usuario from "../events/onSelecionarUsuario"
+
 export default {
     data() {
         return {
             usuario: null
         }
+    },
+    created() {
+        /*
+            Depois que o componente for criado, ele irá começar a escutar o evento
+            (onSelecionarUsuario) e quando esse evento ocorer será executada a função
+        */
+        event_selecionar_usuario.$on("onSelecionarUsuario", (usuario) => {
+            this.usuario = usuario
+        })
+    },
+    destroyed() {
+        /*
+            Depois que o componente for destruido, ele irá parar de escutar o evento
+            (onSelecionarUsuario)
+        */
+        event_selecionar_usuario.$off("onSelecionarUsuario")
     }
 }
 </script>
