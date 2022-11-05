@@ -1,31 +1,65 @@
 <template>
-    <div :class="classe_estado">
+    <div
+        :class="classe_estado"
+        @click="toggle_tarefa"
+    >
+        <span
+            class="xis flex-center"
+            @click="del_tarefa"
+        >X</span>
         <h1>{{ tarefa.nome }}</h1>
     </div>
 </template>
 
+
 <script>
+import onUpdateBarraProgresso from "../events/onUpdateBarraProgresso"
+import onToggleTarefa from "../events/onToggleTarefa"
+import onDelTarefa from "../events/onDelTarefa"
+
 export default {
     name: "Tarefa",
-    props: {
-        tarefa: {
-            type: Object,
-            required: true
+    props: ["tarefa"],
+    computed: {
+        classe_estado() {
+            return {
+                tarefa: true,
+                "flex-center": true,
+                pendente: this.tarefa.pendente,
+                feito: !this.tarefa.pendente
+            }
         }
     },
-    computed: {
-        classe_estado: () => ({
-            tarefa: true,
-            pendente: this.tarefa.pendente,
-            feito: !this.tarefa.pendente
-        })
+    methods: {
+        toggle_tarefa() {
+            onToggleTarefa.$emit("toggle-tarefa", this.tarefa.nome)
+            onUpdateBarraProgresso.$emit("update-barra-progresso", 0)
+        },
+        del_tarefa() {
+            onDelTarefa.$emit("del-tarefa", this.tarefa.nome)
+            onUpdateBarraProgresso.$emit("update-barra-progresso", -1)
+        }
     }
 }
 </script>
 
 
 <style scoped>
+    .xis {
+        position: absolute;
+        top: 3px;
+        right: 0;
+        color: #ddd;
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+    .xis:hover {
+        background-color: #ddd;
+        color: black;
+        cursor: default;
+    }
     .tarefa {
+        position: relative;
         box-sizing: border-box;
         width: 300px;
         height: 150px;
@@ -35,9 +69,7 @@ export default {
         font-weight: 300;
         cursor: pointer;
         user-select: none;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        margin-bottom: 10px;
     }
 
     .pendente {

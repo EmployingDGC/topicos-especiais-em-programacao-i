@@ -1,24 +1,91 @@
 <template>
-	<div id="app">
+	<div id="app" class="flex-center">
 		<h1>Tarefas</h1>
-		<TarefasGrid :tarefas="tarefas"/>
+
+		<NovaTarefa />
+		
+		<BarraProgresso v-if="tarefas.length" :tarefas="tarefas" />
+		
+		<TarefasGrid :tarefas="tarefas" />
 	</div>
 </template>
 
+
 <script>
-import TarefasGrid from './components/TarefasGrid.vue';
+import TarefasGrid from './components/TarefasGrid.vue'
+import NovaTarefa from './components/NovaTarefa.vue'
+import BarraProgresso from './components/BarraProgresso.vue'
+
+import onNovaTarefa from "./events/onNovaTarefa"
+import onToggleTarefa from "./events/onToggleTarefa"
+import onDelTarefa from "./events/onDelTarefa"
 
 export default {
 	name: "App",
 	components: {
-		TarefasGrid
+		TarefasGrid,
+		NovaTarefa,
+		BarraProgresso
 	},
-	data: () => ({
-		tarefas: [
-			{nome: "Teste1", pendente: false},
-			{nome: "Teste2", pendente: true},
-		]
-	})
+	methods: {
+		nova_tarefa(nome) {
+			const realy_nome = String(nome).trim()
+
+			if (!realy_nome) {
+				return
+			}
+			
+			for (const i in this.tarefas) {
+				const nome_tarefa = this.tarefas[i].nome.toUpperCase()
+
+				if (nome_tarefa == realy_nome.toUpperCase()) {
+					return
+				}
+			}
+			
+			this.tarefas.push({
+				nome: realy_nome,
+				pendente: true
+			})
+		},
+		toggle_tarefa(nome) {
+			for (const i in this.tarefas) {
+				const nome_tarefa = this.tarefas[i].nome
+
+				if (nome_tarefa == nome) {
+					this.tarefas[i].pendente = !this.tarefas[i].pendente
+
+					return
+				}
+			}
+		},
+		del_tarefa(nome) {
+			this.tarefas = this.tarefas.filter((t) => t.nome != nome)
+		}
+	},
+	data() {
+		return {
+			tarefas: []
+		}
+	},
+	created() {
+        onNovaTarefa.$on("nova-tarefa", (nome) => {
+            this.nova_tarefa(nome)
+        })
+
+        onToggleTarefa.$on("toggle-tarefa", (nome) => {
+            this.toggle_tarefa(nome)
+        })
+        
+		onDelTarefa.$on("del-tarefa", (nome) => {
+            this.del_tarefa(nome)
+        })
+    },
+    destroyed() {
+        onNovaTarefa.$off("nova-tarefa")
+        onToggleTarefa.$off("toggle-tarefa")
+        onDelTarefa.$off("del-tarefa")
+    }
 }
 </script>
 
@@ -31,11 +98,8 @@ export default {
 	}
 
 	#app {
-		display: flex;
 		flex: 1;
 		flex-direction: column;
-		justify-content: center;
-		align-items: center;
 		height: 100vh;
 	}
 
