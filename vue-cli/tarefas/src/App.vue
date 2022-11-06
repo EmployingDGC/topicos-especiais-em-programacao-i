@@ -21,6 +21,8 @@ import onToggleTarefa from "./events/onToggleTarefa"
 import onDelTarefa from "./events/onDelTarefa"
 import onUpdateBarraProgresso from "./events/onUpdateBarraProgresso"
 
+const storage_name = "tarefas"
+
 export default {
 	name: "App",
 	components: {
@@ -99,7 +101,14 @@ export default {
         
 		onUpdateBarraProgresso.$on("update-barra-progresso", () => {
             this.calc_progresso()
+			localStorage.setItem(storage_name, JSON.stringify(this.tarefas))
         })
+
+		this.tarefas = JSON.parse(localStorage.getItem(storage_name)) || []
+
+		if (this.tarefas) {
+			this.calc_progresso()
+		}
     },
     destroyed() {
         onNovaTarefa.$off("nova-tarefa")
