@@ -4,7 +4,7 @@
 
 		<NovaTarefa />
 		
-		<BarraProgresso v-if="tarefas.length" :tarefas="tarefas" />
+		<BarraProgresso v-if="tarefas.length" :progresso="progresso" />
 		
 		<TarefasGrid :tarefas="tarefas" />
 	</div>
@@ -19,6 +19,7 @@ import BarraProgresso from './components/BarraProgresso.vue'
 import onNovaTarefa from "./events/onNovaTarefa"
 import onToggleTarefa from "./events/onToggleTarefa"
 import onDelTarefa from "./events/onDelTarefa"
+import onUpdateBarraProgresso from "./events/onUpdateBarraProgresso"
 
 export default {
 	name: "App",
@@ -26,6 +27,12 @@ export default {
 		TarefasGrid,
 		NovaTarefa,
 		BarraProgresso
+	},
+	data() {
+		return {
+			tarefas: [],
+			progresso: 0
+		}
 	},
 	methods: {
 		nova_tarefa(nome) {
@@ -61,12 +68,21 @@ export default {
 		},
 		del_tarefa(nome) {
 			this.tarefas = this.tarefas.filter((t) => t.nome != nome)
-		}
-	},
-	data() {
-		return {
-			tarefas: []
-		}
+		},
+		calc_progresso() {
+            let count_not_pendentes = 0
+
+            for (const i in this.tarefas) {
+                if (!this.tarefas[i].pendente) {
+                    count_not_pendentes += 1
+                }
+            }
+
+            this.progresso = Math.trunc(
+				(count_not_pendentes * 100)
+				/ this.tarefas.length
+			)
+        }
 	},
 	created() {
         onNovaTarefa.$on("nova-tarefa", (nome) => {
@@ -80,11 +96,16 @@ export default {
 		onDelTarefa.$on("del-tarefa", (nome) => {
             this.del_tarefa(nome)
         })
+        
+		onUpdateBarraProgresso.$on("update-barra-progresso", () => {
+            this.calc_progresso()
+        })
     },
     destroyed() {
         onNovaTarefa.$off("nova-tarefa")
         onToggleTarefa.$off("toggle-tarefa")
         onDelTarefa.$off("del-tarefa")
+        onUpdateBarraProgresso.$off("update-barra-progresso")
     }
 }
 </script>

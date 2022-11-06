@@ -23,7 +23,7 @@ export default {
             const input = e.path[1].querySelector("input")
 
             onNovaTarefa.$emit("nova-tarefa", input.value)
-            onUpdateBarraProgresso.$emit("update-barra-progresso", 1)
+            onUpdateBarraProgresso.$emit("update-barra-progresso")
         }
     }
 }

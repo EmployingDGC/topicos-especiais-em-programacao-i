@@ -7,7 +7,7 @@
             <span
                 class="valor-progresso"
             >
-                {{ progresso ? `${progresso}%` : "" }}
+                {{ progresso >= 2 ? `${progresso}%` : "" }}
             </span>
         </span>
         
@@ -16,37 +16,9 @@
 
 
 <script>
-import onUpdateBarraProgresso from "../events/onUpdateBarraProgresso"
-
 export default {
     name: "BarraProgresso",
-    props: ["tarefas"],
-    data() {
-        return {
-            progresso: 0
-        }
-    },
-    methods: {
-        calc_progresso() {
-            let count_not_pendentes = 0
-
-            for (const i in this.tarefas) {
-                if (!this.tarefas[i].pendente) {
-                    count_not_pendentes += 1
-                }
-            }
-
-            this.progresso = Math.trunc((count_not_pendentes * 100) / this.tarefas.length)
-        }
-    },
-    created() {
-        onUpdateBarraProgresso.$on("update-barra-progresso", () => {
-            this.calc_progresso()
-        })
-    },
-    destroyed() {
-        onUpdateBarraProgresso.$off("update-barra-progresso")
-    }
+    props: ["progresso"]
 }
 </script>
 

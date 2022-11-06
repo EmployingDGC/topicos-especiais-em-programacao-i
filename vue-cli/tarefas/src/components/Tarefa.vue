@@ -33,11 +33,11 @@ export default {
     methods: {
         toggle_tarefa() {
             onToggleTarefa.$emit("toggle-tarefa", this.tarefa.nome)
-            onUpdateBarraProgresso.$emit("update-barra-progresso", 0)
+            onUpdateBarraProgresso.$emit("update-barra-progresso")
         },
         del_tarefa() {
             onDelTarefa.$emit("del-tarefa", this.tarefa.nome)
-            onUpdateBarraProgresso.$emit("update-barra-progresso", -1)
+            onUpdateBarraProgresso.$emit("update-barra-progresso")
         }
     }
 }
