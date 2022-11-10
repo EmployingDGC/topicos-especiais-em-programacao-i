@@ -47,17 +47,20 @@ export default {
 <style scoped>
     .xis {
         position: absolute;
-        top: 3px;
+        top: 5px;
         right: 0;
         color: #ddd;
-        font-size: 1.5rem;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        font-size: .9rem;
         font-weight: 600;
     }
     .xis:hover {
-        background-color: #ddd;
-        color: black;
+        color: red;
         cursor: default;
     }
+    
     .tarefa {
         position: relative;
         box-sizing: border-box;
@@ -77,10 +80,18 @@ export default {
         background-color: #f44336;
     }
 
+    .pendente .xis {
+        background-color: #b73229;
+    }
+
     .feito {
         color: #ddd;
         border-left: 12px solid #0a8f08;
         background-color: #4caf50;
         text-decoration: line-through lime;
+    }
+
+    .feito .xis {
+        background-color: #0a8f08;
     }
 </style>
