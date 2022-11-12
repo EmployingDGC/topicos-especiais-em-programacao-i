@@ -74,6 +74,7 @@ export default {
 
 <style scoped>
     .menu {
+        margin-top: 5px;
         max-width: 350px;
         min-width: 250px;
         margin-right: 5px;
@@ -115,7 +116,13 @@ export default {
         padding: 20px;
         background-color: var(--color-background-button-blue);
         color: var(--color-text-white);
-        font-weight: 400;
+        font-weight: 900;
         margin-top: 15px;
+        cursor: pointer;
+        font-size: 1.1rem;
+    }
+
+    button:hover {
+        background-color: var(--color-background-button-hover-blue);
     }
 </style>
