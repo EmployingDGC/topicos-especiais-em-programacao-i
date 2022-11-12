@@ -13,7 +13,6 @@ export default {
 
 <style scoped>
     .search-bar {
-        margin-top: 5px;
         display: flex;
         align-items: center;
         justify-content: center;
