@@ -1,7 +1,7 @@
 <template>
     <div class="main">
         <Intrigar :logged_user="get_logged_user()" />
-        <div>
+        <div class="container-posts">
             <Post
                 v-for="p in posts"
                 :key="p.id"
@@ -24,11 +24,6 @@ export default {
     components: {
         Intrigar,
         Post
-    },
-    watch: {
-        // posts() {
-            
-        // }
     },
     data() {
         return {
@@ -91,5 +86,9 @@ export default {
     .main {
         width: 600px;
         padding: 5px;
+    }
+
+    .container-posts {
+        margin-top: 10px;
     }
 </style>
