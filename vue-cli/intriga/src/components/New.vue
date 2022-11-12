@@ -31,5 +31,6 @@ export default {
     .c-new h2 {
         font-size: 15px;
         color: var(--color-text-white);
+        font-weight: 400;
     }
 </style>
