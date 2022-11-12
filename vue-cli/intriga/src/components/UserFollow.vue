@@ -1,6 +1,6 @@
 <template>
     <div class="container-user-follow">
-        <User :user="user" />
+        <User :user="user" :enabled_infos="true" />
         <button>Seguir</button>
     </div>
 </template>
