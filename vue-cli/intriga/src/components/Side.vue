@@ -30,5 +30,6 @@ export default {
 <style scoped>
     .side {
         max-width: 350px;
+        padding: 5px;
     }
 </style>
