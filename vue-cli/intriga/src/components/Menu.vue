@@ -74,10 +74,9 @@ export default {
 
 <style scoped>
     .menu {
-        margin-top: 5px;
         max-width: 350px;
         min-width: 250px;
-        margin-right: 5px;
+        padding: 5px;
     }
 
     .link {
