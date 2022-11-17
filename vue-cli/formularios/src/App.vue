@@ -11,7 +11,7 @@
 					<input type="password" v-model="senha">
 				</Rotulo>
 				<Rotulo nome="Idade">
-					<input type="number" v-model="idade">
+					<input type="number" v-model.number="idade">
 				</Rotulo>
 				<Rotulo nome="Mensagem">
 					<textarea name="" cols="30" rows="5"></textarea>
@@ -45,7 +45,7 @@
 					<span>{{ senha || default_text }}</span>
 				</Rotulo>
 				<Rotulo nome="Idade">
-					<span>{{ idade || default_text }}</span>
+					<span>{{ typeof idade || default_text }}</span>
 				</Rotulo>
 				<Rotulo nome="Mensagem">
 					<span>???</span>
