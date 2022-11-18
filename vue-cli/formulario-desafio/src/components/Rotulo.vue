@@ -1,6 +1,6 @@
 <template>
     <div class="rotulo">
-        <label>{{ nome }}:</label>
+        <label>{{ nome }}</label>
         <div class="elemento">
             <slot></slot>
         </div>
@@ -24,7 +24,9 @@ export default {
 
     .elemento {
         display: flex;
+        flex-direction: column;
         align-self: stretch;
+        text-align: left;
         margin: 10px 0px;
     }
 
