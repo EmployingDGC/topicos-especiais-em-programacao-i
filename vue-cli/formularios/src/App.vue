@@ -5,7 +5,7 @@
 			<form class="painel">
 				<div class="cabecalho">Formulário</div>
 				<Rotulo nome="E-mail">
-					<input type="text" v-model="email">
+					<input type="text" v-model.lazy.trim="email">
 				</Rotulo>
 				<Rotulo nome="Senha">
 					<input type="password" v-model="senha">
