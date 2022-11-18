@@ -31,6 +31,7 @@
 							v-for="p in prioridades"
 							:key="p.codigo"
 							:value="p.codigo"
+							:selected="p.codigo == '1'"
 						>{{ p.nome }}</option>
 					</select>
 				</Rotulo>
