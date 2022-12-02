@@ -6,6 +6,7 @@
                 placeholder="O que está acontecendo?"
                 maxlength="280"
                 wrap="hard"
+                v-model.trim="value_post"
                 @keyup.ctrl.enter="new_post"
             ></textarea>
             <button
@@ -27,19 +28,18 @@ export default {
     },
     data() {
         return {
-            
+            value_post: null
         }
     },
     methods: {
-        new_post(e) {
-            const value_post = e.path[1].querySelector("textarea").value.trim()
-
-            if (value_post) {
+        new_post() {
+            if (this.value_post) {
                 onAddPost.$emit("add-post", {
                     user_id: this.logged_user.id,
-                    content: value_post,
+                    content: this.value_post,
                     qtt_like: 0,
-                    qtt_reintrig: 0
+                    qtt_reintrig: 0,
+                    date: new Date()
                 })
             }
         }

@@ -28,9 +28,9 @@ export default {
     data() {
         return {
             posts: [
-                {id: 1, user_id: 3, content: "Partiu Programar #VueJS", qtt_like: 5, qtt_reintrig: 0},
-                {id: 2, user_id: 6, content: "Partiu Programar #VueJS", qtt_like: 10, qtt_reintrig: 3},
-                {id: 3, user_id: 5, content: "Partiu Programar #VueJS", qtt_like: 15, qtt_reintrig: 1},
+                {id: 1, user_id: 3, content: "Partiu Programar #VueJS", qtt_like: 5, qtt_reintrig: 0, date: new Date("2022-01-01 17:55:13")},
+                {id: 2, user_id: 6, content: "Partiu Programar #VueJS", qtt_like: 10, qtt_reintrig: 3, date: new Date("2022-02-02 19:23:27")},
+                {id: 3, user_id: 5, content: "Partiu Programar #VueJS", qtt_like: 15, qtt_reintrig: 1, date: new Date("2022-03-03 10:15:33")},
             ]
         }
     },
@@ -44,7 +44,7 @@ export default {
                 list_id.push(post.id)
             }
 
-            return Math.max(list_id) + 1
+            return Math.max(...list_id) + 1
         },
         get_logged_user() {
             for (let i = 0; i < this.users.length; i += 1) {
