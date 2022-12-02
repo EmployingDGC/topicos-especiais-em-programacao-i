@@ -18,7 +18,7 @@ const get_str_month = (month) => {
 }
 
 const format_date = (date) => {
-    const days = date.getDay()
+    const days = date.getDate()
     const months = date.getMonth()
     const years = date.getFullYear()
     const hours = date.getHours()
