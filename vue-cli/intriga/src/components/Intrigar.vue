@@ -42,6 +42,8 @@ export default {
                     date: new Date()
                 })
             }
+
+            this.value_post = null
         }
     }
 }
