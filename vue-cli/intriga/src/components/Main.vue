@@ -17,6 +17,7 @@ import Intrigar from "./Intrigar.vue"
 import Post from "./Post.vue"
 
 import onAddPost from "../events/onAddPost"
+import onDelPost from "../events/onDelPost"
 
 export default {
     name: "Main",
@@ -75,9 +76,27 @@ export default {
 
             this.posts.push({id, ...post})
         })
+
+        onDelPost.$on("del-post", (post) => {
+            const user_id = this.get_logged_user().id
+
+            if (user_id != post.user_id) {
+                return
+            }
+
+            for (let i = 0; i < this.posts.length; i += 1) {
+                const p = this.posts[i]
+                
+                if (p.id == post.id) {
+                    this.posts.splice(i, 1)
+                    return
+                }
+            }
+        })
     },
     destroyed() {
         onAddPost.$off("add-post")
+        onDelPost.$off("del-post")
     }
 }
 </script>
