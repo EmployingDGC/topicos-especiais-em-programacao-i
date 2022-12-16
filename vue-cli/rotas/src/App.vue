@@ -1,15 +1,18 @@
 <template>
 	<div id="app">
 		<h1>Rotas com VueRouter</h1>
+		<Menu />
 		<router-view />
 	</div>
 </template>
 
 <script>
+import Menu from "./components/templates/Menu.vue"
+
 export default {
 	name: "App",
 	components: {
-		
+		Menu
 	},
 	data() {
 		return {
