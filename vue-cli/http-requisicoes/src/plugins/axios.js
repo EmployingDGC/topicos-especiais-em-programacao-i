@@ -12,36 +12,36 @@ Vue.use({
                 }
             }
         })
-        Vue.prototype.$http.interceptors.request.use(
-            (config) => {
-                console.log(config.method)
-                return config
-            },
-            (error) => {
-                Promise.reject(error)
-            }
-        )
-        Vue.prototype.$http.interceptors.response.use(
-            (res) => {
-                const lista = []
+        // Vue.prototype.$http.interceptors.request.use(
+        //     (config) => {
+        //         console.log(config.method)
+        //         return config
+        //     },
+        //     (error) => {
+        //         Promise.reject(error)
+        //     }
+        // )
+        // Vue.prototype.$http.interceptors.response.use(
+        //     (res) => {
+        //         const lista = []
 
-                for (let c in res.data) {
-                    const data = res.data[c]
+        //         for (let c in res.data) {
+        //             const data = res.data[c]
 
-                    lista.push({
-                        id: c,
-                        nome: data.nome,
-                        email: data.email
-                    })
-                }
+        //             lista.push({
+        //                 id: c,
+        //                 nome: data.nome,
+        //                 email: data.email
+        //             })
+        //         }
 
-                res.data = lista
+        //         res.data = lista
 
-                return res
-            },
-            (error) => {
-                Promise.reject(error)
-            }
-        )
+        //         return res
+        //     },
+        //     (error) => {
+        //         Promise.reject(error)
+        //     }
+        // )
     }
 })
