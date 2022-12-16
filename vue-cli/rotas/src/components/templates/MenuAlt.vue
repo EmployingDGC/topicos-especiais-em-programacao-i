@@ -6,19 +6,19 @@
                 tag="li"
                 active-class="active"
                 exact
-            ><a>Inicio</a></router-link>
+            ><a>Home</a></router-link>
             <router-link
                 to="/usuario"
                 tag="li"
                 active-class="active"
-            ><a>Usuario 1</a></router-link>
+            ><a>User</a></router-link>
         </ul>
     </nav>
 </template>
 
 <script>
 export default {
-    name: "Menu",
+    name: "MenuAlt",
     components: {
         
     },

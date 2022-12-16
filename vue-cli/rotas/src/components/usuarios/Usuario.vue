@@ -1,8 +1,8 @@
 <template>
     <div class="usuario">
         <h2>Usuário</h2>
-        <hr>
-        <p><strong>Código: </strong>{{ id }}</p>
+        <router-view name="menu" />
+        <router-view />
         <button
             @click="ir_para_inicio"
             sucesso
@@ -13,7 +13,6 @@
 <script>
 export default {
     name: "Usuario",
-    props: ["id"],
     components: {
         
     },
@@ -25,7 +24,7 @@ export default {
     methods: {
         ir_para_inicio() {
             // this.$router.push("/")
-            this.$router.push({path: "/"})
+            this.$router.push({name: "inicio"})
         }
     }
 }
